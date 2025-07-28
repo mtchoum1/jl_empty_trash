@@ -1,3 +1,9 @@
+from tornado import ioloop
+
+from jl_empty_trash.config import ResourceUseDisplay
+from jl_empty_trash.metrics import TrashMetricsLoader
+from jl_empty_trash.prometheus import PrometheusHandler
+
 try:
     from ._version import __version__
 except ImportError:
@@ -34,3 +40,9 @@ def _load_jupyter_server_extension(server_app):
     setup_handlers(server_app.web_app)
     name = "jl_empty_trash"
     server_app.log.info(f"Registered {name} server extension")
+
+    reuseconfig = ResourceUseDisplay(parent=server_app)
+    server_app.web_app.settings["jl_empty_trash_config"] = reuseconfig
+
+    callback = ioloop.PeriodicCallback(PrometheusHandler(TrashMetricsLoader(server_app)), 1000)
+    callback.start()
