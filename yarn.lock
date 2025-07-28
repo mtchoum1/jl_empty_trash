@@ -2021,7 +2021,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jupyterlab/application@npm:^4.0.0, @jupyterlab/application@npm:^4.4.5":
+"@jupyterlab/application@npm:^4.4.5":
   version: 4.4.5
   resolution: "@jupyterlab/application@npm:4.4.5"
   dependencies:
@@ -6643,7 +6643,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "jl_empty_trash@workspace:."
   dependencies:
-    "@jupyterlab/application": ^4.0.0
+    "@jupyterlab/application": ^4.4.5
+    "@jupyterlab/apputils": ^4.5.5
     "@jupyterlab/builder": ^4.0.0
     "@jupyterlab/coreutils": ^6.0.0
     "@jupyterlab/services": ^7.0.0
